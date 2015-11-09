@@ -1,0 +1,89 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Details for Special #<span data-ng-bind="special.id"></span></h3>
+    </div>
+    <div class="modal-body">
+        <form name="forms.specialForm" class="form-horizontal" role="form">
+
+            <div class="form-group">
+				<label class="col-sm-2 control-label">Name:</label>
+				<div class="col-sm-10">
+					<input name="specialName" class="form-control" type="text" ng-model="special.name" ng-minlength="3" ng-maxlength="50" required />
+				</div>
+			</div>
+            
+            <div class="form-group">
+				<label class="col-sm-2 control-label">Applies to Offer:</label>
+				<div class="col-sm-10">
+					<ui-select name="specialOffer" ng-model="selectedOffer" on-select="selectOffer($item, $model)" required>
+						<ui-select-match placeholder="Select offer...">{{$select.selected.description}}
+						</ui-select-match>
+						<ui-select-choices repeat="o in allOffers | filter: $select.search">
+							<div ng-bind-html="trustAsHtml((o.description | highlight: $select.search))"></div>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+            
+            <div class="form-group">
+				<label class="col-sm-2 control-label">Special Price:</label>
+				<div class="col-sm-10">
+					<input name="specialPrice" class="form-control" type="number" money-to-number ng-model="special.specialPrice" 
+						min="0" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" placeholder="0,00" required />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Active From Day:</label>
+				<div class="col-sm-10">
+					<select name="activeStartingDay" class="form-control" ng-model="special.activePeriod.startingDay" required convert-to-number>
+						<!-- TODO Add translation, locale-dependent ordering, ... -->
+						<option value="MONDAY">Monday</option>
+						<option value="TUESDAY">Tuesday</option>
+						<option value="WEDNESDAY">Wednesday</option>
+						<option value="THURSDAY">Thursday</option>
+						<option value="FRIDAY">Friday</option>
+						<option value="SATURDAY">Saturday</option>
+						<option value="SUNDAY">Sunday</option>
+					</select>
+				</div>
+			</div>
+            
+            <div class="form-group">
+				<label class="col-sm-2 control-label">Active To Day:</label>
+				<div class="col-sm-10">
+					<select name="activeStartingDay" class="form-control" ng-model="special.activePeriod.endingDay" required convert-to-number>
+						<!-- TODO Add translation, locale-dependent ordering, ... -->
+						<option value="MONDAY">Monday</option>
+						<option value="TUESDAY">Tuesday</option>
+						<option value="WEDNESDAY">Wednesday</option>
+						<option value="THURSDAY">Thursday</option>
+						<option value="FRIDAY">Friday</option>
+						<option value="SATURDAY">Saturday</option>
+						<option value="SUNDAY">Sunday</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Active From Hour:</label>
+				<div class="col-sm-10">
+					<input name="activeStartingTime" class="form-control" type="number" ng-model="special.activePeriod.startingHour" required />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Active Till Hour:</label>
+				<div class="col-sm-10">
+					<input name="activeEndingTime" class="form-control" type="number" ng-model="special.activePeriod.endingHour" required />
+				</div>
+			</div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-ng-disabled="forms.specialForm.$invalid" ng-click="submit()" translate>
+            TABLE_MGMT.SUBMIT
+        </button>
+        <button class="btn btn-warning" ng-click="$close()" translate>TABLE_MGMT.CANCEL</button>
+    </div>
+</div>

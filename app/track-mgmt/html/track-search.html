@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--dialog template for the special-search dialog-->
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Tracks</h2>
+
+        <!--trNgGrid directive usage. For detail please see: https://github.com/MoonStorm/trNgGrid-->
+        <!--items and selected-items attributes are provided with data from TrackSearchCntl $scope model variables-->
+        <table class="raw-table"
+               tr-ng-grid=""
+               selection-mode="SingleRow"
+               enable-filtering="false"
+               selected-items="selectedItems"
+               items="gridOptions.data">
+            <thead>
+            <tr>
+                <th field-name="id" display-name="Nr" cell-width="7em"></th>
+                <th field-name="name" display-name="Name" cell-width="7em"></th>
+                <th field-name="totalDistance" display-name="Distanz"></th>
+                <th field-name="totalDuration" display-name="Dauer"></th>
+            </tr>
+            </thead>
+        </table>
+
+        <!--button-bar directive usage with button definition created in the TrackSearchCntl (track-search.controller.js file)-->
+        <button-bar button-defs="buttonDefs"></button-bar>
+        <br>
+        <br>
+        <br>
+        <!--pagination directive usage. For details please see https://angular-ui.github.io/bootstrap/#/pagination-->
+        <!--total-items, items-per-page, ng-model, num-pages, max-size attributes are provided with data from TrackSearchCntl $scope model variables-->
+        <pagination
+                total-items="totalItems"
+                items-per-page="numPerPage"
+                ng-model="currentPage"
+                num-pages="numPages"
+                class="pagination-sm"
+                boundary-links="true"
+                rotate="false"
+                max-size="maxSize">
+        </pagination>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Delete Track #<span data-ng-bind="track.id"></span></h3>
+    </div>
+    <div class="modal-body">
+        <form name="forms.trackForm" class="form-horizontal" role="form">
+
+            <div class="form-group">
+				<label class="col-sm-2 control-label">Name:</label>
+				<div class="col-sm-10">
+					<input name="trackName" class="form-control" type="text" ng-model="track.name" ng-minlength="3" ng-maxlength="50" required />
+				</div>
+			</div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-ng-disabled="forms.trackForm.$invalid" ng-click="submit()" translate>
+            TABLE_MGMT.SUBMIT
+        </button>
+        <button class="btn btn-warning" ng-click="$close()" translate>TABLE_MGMT.CANCEL</button>
+    </div>
+</div>
