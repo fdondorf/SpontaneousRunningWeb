@@ -46,6 +46,26 @@ angular.module('app.main')
                     });
                 }
             };
+            
+             $scope.signInFB = function () {
+                var addErrorMessageAndClearForm = function (message) {
+                    $scope.errorMessage.text = message;
+                    $scope.credentials = {};
+                    $scope.validation.forceShowingValidationErrors = false;
+                    $scope.loginForm.$setPristine();
+                };
+                if ($scope.loginForm.$invalid) {
+                    $scope.validation.forceShowingValidationErrors = true;
+                } else {
+                    globalSpinner.decorateCallOfFunctionReturningPromise(function () {
+                        return oaspSecurityService.logInFB();
+                    }).then(function () {
+                        signInSuccessCallback();
+                    }, function () {
+                        addErrorMessageAndClearForm('Authentication failed. Please try again!');
+                    });
+                }
+            };
         };
     });
 

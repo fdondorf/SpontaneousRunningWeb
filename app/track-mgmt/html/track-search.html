@@ -3,11 +3,15 @@
 <body>
 
 <!--dialog template for the special-search dialog-->
-
+<div class="container">
 <div class="row">
     <div class="col-md-12">
-        <h2>Tracks</h2>
+        <h2><span translate="">OASP.HDR_TRACKS</span></h2>
 
+        <div>
+            <panel items="gridOptions.data" user="userData" index = $index + 1></panel>
+        </div>
+        
         <!--trNgGrid directive usage. For detail please see: https://github.com/MoonStorm/trNgGrid-->
         <!--items and selected-items attributes are provided with data from TrackSearchCntl $scope model variables-->
         <table class="raw-table"
@@ -45,5 +49,6 @@
         </pagination>
     </div>
 </div>
+</div> <!-- /container -->
 </body>
 </html>

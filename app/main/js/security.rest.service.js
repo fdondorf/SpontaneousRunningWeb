@@ -18,6 +18,12 @@ angular.module('app.main').factory('securityRestService', function ($http, curre
             });
             /*jshint +W106*/
         },
+        loginSocial: function (email, id) {
+            return $http.post(servicePath + 'login', {
+               j_username: email,
+                j_password: id
+            });
+        },
         logout: function () {
             return $http.get(servicePath + 'logout');
         }

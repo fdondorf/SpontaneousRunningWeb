@@ -1,0 +1,30 @@
+<div class="panel panel-default" ng-repeat="item in items">
+	<div class="panel-header">
+		<div style="display: inline">
+			<img class="img-circle" src="main/img/profile1.png" alt="Any image" width="30" height="30">
+		</div>
+		<h3 style="display: inline-block;">{{user.name}} {{item.name}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="panel-unit">
+			<div>Distanz</div>
+			<h4 style="font-weight: bold;">{{item.totalDistance}} km</h4>
+		</div>
+		<div class="panel-unit">
+			<div>Dauer</div>
+			<h4 style="font-weight: bold">{{item.totalDuration}} h</h4>
+		</div>
+		<div class="panel-unit">
+			<div>Schnitt</div>
+			<h4 style="font-weight: bold">{{item.averageSpeed}} min/km</h4>
+		</div>
+		<div class="panel-unit">
+			<div>Wann?</div>
+			<h4 style="font-weight: bold">{{item.creationTime}}</h4>
+		</div>
+		<div class="panel-unit">
+			<div>User</div>
+			<h4 style="font-weight: bold">{{item.userId}}</h4>
+		</div>
+	</div>
+</div>

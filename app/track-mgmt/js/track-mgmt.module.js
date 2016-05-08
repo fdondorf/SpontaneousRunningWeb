@@ -38,5 +38,15 @@ angular.module('app.track-mgmt', ['ngRoute', 'app.track-mgmt', 'app.main', 'app.
             }]
         }
     });
+}).directive('panel', function() {
+    return {
+        restrict:'E',
+        scope: {
+            items: '=',
+            user: '=',
+            index: '='
+        },
+        templateUrl:'track-mgmt/html/trackPanel1.html'
+    }
 });
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <body>
+
+    <div class="bs-docs-header" id="content" tabindex="-1" data-ng-controller="AppCntl"> 
+      <div class="container"> 
+        <h1><span translate="">OASP.HDR_REGISTER</span></h1> 
+      </div>
+    </div> 
+    
+    <div class="container">
+      <form class="form-signin" name="registerForm" novalidate>
+          <div>
+            <alert data-ng-show="errorMessage.hasOne()" data-close="errorMessage.clear()" data-type="danger"><span data-ng-bind="errorMessage.text"></span></alert>
+          </div>
+          
+          <div class="row">
+              <div class="col-xs-6">
+                    <span class="label label-danger" data-ng-show="validationReg.firstnameNotProvided()">Please enter your firstname!</span>
+                    <input type="text" placeholder="Firstname..." name="firstname" class="form-control" data-ng-model="user.firstname" data-ng-required="true">
+              </div>
+              <div class="col-xs-6">
+                    <span class="label label-danger" data-ng-show="validationReg.lastnameNotProvided()">Please enter your name!</span>
+                    <input type="text" placeholder="Lastame..." name="lastname" class="form-control" data-ng-model="user.lastname" data-ng-required="true">
+              </div> 
+          </div> <!-- /row -->
+          
+          <div class="row">  
+            <div class="col-xs-12">
+                  <span class="label label-danger" data-ng-show="validationReg.newUserNameNotProvided()">Please enter your username!</span>
+                  <input type="text" placeholder="Username..." name="userName" class="form-control" data-ng-model="user.username" data-ng-required="true">
+            </div>
+          </div> <!-- /row -->
+          
+          <div class="row">    
+            <div class="col-xs-12">
+                  <span class="label label-danger" data-ng-show="validationReg.newPasswordNotProvided()">Please enter your password!</span>
+                  <input type="password" placeholder="Password" name="password" class="form-control" data-ng-model="user.password" data-ng-required="true">
+            </div>
+          </div> <!-- /row -->
+           
+          <div class="row">   
+            <div class="col-xs-12">
+                  <span class="label label-danger" data-ng-show="validationReg.emailNotProvided()">Please enter your E-Mail!</span>
+                  <input type="email" placeholder="E-Mail..." name="email" class="form-control" data-ng-model="user.email" data-ng-required="true">
+            </div>
+           </div> <!-- /row -->   
+            
+           <div class="row">   
+            <div class="col-xs-12">
+                  <span class="label label-danger" data-ng-show="validationReg.emailNotProvided()">Please repeat your E-Mail!</span>
+                  <input type="email" placeholder="E-Mail (Repeat)..." name="email" class="form-control" data-ng-model="user.emailRepeat" data-ng-required="true">
+            </div>
+           </div> <!-- /row --> 
+           
+           <div class="row">
+              <div class="col-xs-12">
+                <button type="submit" class="btn btn-success" data-ng-click="register()"><span translate="">OASP.HDR_REGISTER</span></button>
+              </div>
+           </div> <!-- /row -->
+           
+      </form>
+      
+    </div>	<!-- /container -->  
+	  
+  </body>
+</html>

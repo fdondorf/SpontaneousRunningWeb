@@ -1,6 +1,8 @@
 angular.module('app.main', ['ngRoute', 'oasp.oaspUi', 'oasp.oaspSecurity', 'app.main.templates', 'oasp.oaspI18n', 'ui.bootstrap'])
     .constant('SIGN_IN_DLG_PATH', '/main/sign-in')
-    .config(function (SIGN_IN_DLG_PATH, $routeProvider, oaspTranslationProvider) {
+    .constant('REGISTER_DLG_PATH', '/main/register')
+    .constant('REGISTER_SUCCESS_DLG_PATH', '/main/register-success')
+    .config(function (SIGN_IN_DLG_PATH, REGISTER_DLG_PATH, REGISTER_SUCCESS_DLG_PATH, $routeProvider, oaspTranslationProvider) {
         'use strict';
         $routeProvider
             .when('/', {
@@ -10,6 +12,24 @@ angular.module('app.main', ['ngRoute', 'oasp.oaspUi', 'oasp.oaspSecurity', 'app.
             .when(SIGN_IN_DLG_PATH, {
                 templateUrl: 'main/html/sign-in.html',
                 controller: 'SignInCntl',
+                resolve: {
+                    check: ['homePageRedirector', function (homePageRedirector) {
+                        return homePageRedirector.rejectAndRedirectToHomePageIfUserLoggedIn();
+                    }]
+                }
+            })
+            .when(REGISTER_DLG_PATH, {
+                templateUrl: 'main/html/register.html',
+                controller: 'RegisterCntl',
+                resolve: {
+                    check: ['homePageRedirector', function (homePageRedirector) {
+                        return homePageRedirector.rejectAndRedirectToHomePageIfUserLoggedIn();
+                    }]
+                }
+            })
+            .when(REGISTER_SUCCESS_DLG_PATH, {
+                templateUrl: 'main/html/register-success.html',
+                controller: 'RegisterSuccessCntl',
                 resolve: {
                     check: ['homePageRedirector', function (homePageRedirector) {
                         return homePageRedirector.rejectAndRedirectToHomePageIfUserLoggedIn();

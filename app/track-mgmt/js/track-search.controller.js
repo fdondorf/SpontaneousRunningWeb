@@ -6,7 +6,7 @@ angular.module('app.track-mgmt')
     // other OASP services)
     // For more details regarding controller concept and assigning model and behavior to $scope object, please check:
     // https://docs.angularjs.org/guide/controller
-    .controller('TrackSearchCntl', function ($scope, $modal, tracks, paginatedTracksList) {
+    .controller('TrackSearchCntl', function ($scope, $modal, tracks, appContext, paginatedTracksList) {
         'use strict';
         
         // Internal controller function returning the selected row in the tracks table.
@@ -15,7 +15,7 @@ angular.module('app.track-mgmt')
         var selectedTrack = function () {
             return $scope.selectedItems && $scope.selectedItems.length ? $scope.selectedItems[0] : undefined;
         };
-        
+
          // creating model - assigning data to $scope object. Data may come from different sources:
         // calculated by the controller logic / simple assignments / data from injected services
         $scope.selectedItems = [];
@@ -42,6 +42,10 @@ angular.module('app.track-mgmt')
                 $scope.gridOptions.data = paginatedTracksList.result;
             });
         };
+
+        $scope.userData = function () {
+            appContext.getCurrentUser();
+        }
         
         // $scope function definition for calling modal dialog for track edition. 
         // The function is indirectly called in the track-search.html -
@@ -64,10 +68,26 @@ angular.module('app.track-mgmt')
 						return loadedTrack;
 					} else {
 						// create
+                        var trackData = {};
+                        var segment1 = {};
+                        segment1.name = "Segment 1";
+                        segment1.startTimeInMillis = "11111111";
+                        
+                        var segment2 = {};
+                        segment2.name = "Segment 2";
+                        segment2.startTimeInMillis = "22322222";
+                        trackData.segments = [segment1, segment2];
+                         
+                        trackData.startTimeInMillis = 1000000;
+                        
 						return {
 							"name": null,
+                            "creationTime": 334345345,
 							"totalDistance": null,
-							"totalDuration": null
+							"totalDuration": null,
+                            "averageSpeed": 234234234,
+                            "userId": 0,
+                            "trackData": JSON.stringify(trackData)
 						}
 					   }
 				    }

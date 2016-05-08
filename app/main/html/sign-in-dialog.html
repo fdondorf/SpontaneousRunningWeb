@@ -1,0 +1,68 @@
+<div id="fb-root"></div>
+<form name="loginForm" novalidate>
+    <div class="fl-modal-close" ng-click="$dismiss()">
+         <img src="main/img/cancel.png" alt="Smiley face" style="width:30px; height: 30px;"/> 
+    </div>
+    <div class="modal-header">
+        <h3 class="modal-title">
+            <span translate="">OASP.SIGN_IN</span>
+        </h3>
+    </div>
+    <div class="modal-body">
+  
+        <div class="row">
+            <div class="col-md-12">
+               <!--
+               <div class="fb-login-btn">
+                <fb:login-button id="fbLogin" size="large" autologoutlink="true" scope="public_profile,email">
+                    <span translate="">Facebook Login</span>
+                </fb:login-button>
+               </div>
+               -->
+                
+                <button class="btn btn-success btn-lg btn-full fb-login-btn" data-ng-click="signInFB()">
+                    <span translate="">OASP.SIGN_IN_FACEBOOK</span>
+                </button>
+                
+            </div> 
+        </div>    
+        
+        <div class="row">
+            <div class="col-md-5">
+                <hr class="featurette-divider">
+            </div>
+            <div class="col-md-2" style="text-align: center;">
+                <span translate="">OASP.OR</span>
+            </div>
+            <div class="col-md-5">
+                <hr class="featurette-divider">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <alert data-ng-show="errorMessage.hasOne()" data-close="errorMessage.clear()" data-type="danger">
+                    <span data-ng-bind="errorMessage.text"></span>
+                </alert>
+                <p>
+                     <span class="label label-danger" data-ng-show="validation.userNameNotProvided()">Please enter your user name!</span>
+                     <input type="text" placeholder="User Name" name="userName" class="form-control" data-ng-model="credentials.username" data-ng-required="true">
+                </p>
+                <p>
+                    <span class="label label-danger" data-ng-show="validation.passwordNotProvided()">Please enter your password!</span>
+                    <input type="password" placeholder="Password" name="password" class="form-control" data-ng-model="credentials.password" data-ng-required="true">
+                </p>
+                <p>
+                    <button class="btn btn-success btn-lg btn-full" data-ng-click="signIn()"><span translate="">OASP.SIGN_IN</span></button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="modal-footer">
+       <span>Footer</span>
+    </div>
+    -->
+    <script>FB.XFBML.parse();</script>
+    <script>FB.XFBML.parse(document.getElementById('fbLogin'));</script>
+</form>

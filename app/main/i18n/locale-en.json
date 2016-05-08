@@ -1,7 +1,17 @@
 {
     "OASP": {
-        "LOGGED_IN_AS": "Logged in as",
+        "TITLE": "Spontaneous Running",
+        "TEASER": "The Running-App. Become one of 37 Mil. runners and just enjoy every step you make...",
+        "LOGGED_IN_AS": "Hello ",
         "LANGUAGE": "Language",
-        "LOG_OFF": "Log off"
+        "LOG_OFF": "Log off",
+        "SIGN_IN": "Login",
+        "SIGN_IN_FACEBOOK": "Login via facebook",
+        "REGISTER": "Register now &raquo;",
+        "HDR_REGISTER": "Register",
+        "OR": "or",
+        "CANCEL": "Cancel",
+        
+        "HDR_TRACKS": "Activities"
     }
 }

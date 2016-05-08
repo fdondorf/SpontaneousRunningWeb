@@ -1,7 +1,18 @@
 {
     "OASP": {
-        "LOGGED_IN_AS": "Angemeldet als",
+        "TITLE": "Spontaneous Running",
+        "TEASER": "Die Lauf-App. Werde einer von 37 Mio. Läufern und genieße jeden Schritt...",
+        "LOGGED_IN_AS": "Hallo ",
         "LANGUAGE":"Sprache",
-        "LOG_OFF": "Abmelden"
+        "LOG_OFF": "Abmelden",
+        "SIGN_IN": "Anmelden",
+        "SIGN_IN_FACEBOOK": "Anmelden mit facebook",
+        "REGISTER": "Jetzt registrieren &raquo;",
+        "HDR_REGISTER": "Registrieren",
+        "OR": "oder",
+        "CANCEL": "Abbrechen",
+        
+        "HDR_TRACKS": "Aktivitäten"
+        
     }
 }
